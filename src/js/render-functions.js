@@ -13,28 +13,37 @@ const lightbox = new SimpleLightbox('.gallery a', {
     captionPosition: 'bottom',
 });
 
-export function renderImages(images) {
-const markup = images.map(({image}) => {
-    return `
-    <li class="gallery-item">
-	<a class="gallery-link" href="${image.largeImageURL}">
-	<img 
-	class="gallery-image" 
-	src="${image.webformatURL}" 
-	alt="${image.tags}" 
-	/>
-	</a>
-    <div class="info">
+export function createGallery(images) {
+    const markup = images.map(image => `
+        <li class="gallery-item">
+        <a class="gallery-link" href="${image.largeImageURL}">
+        <img 
+        class="gallery-image" 
+        src="${image.webformatURL}" 
+        alt="${image.tags}" 
+        />
+        </a>
+        <div class="info">
         <p><b>Likes:</b>${image.likes}</p>
         <p><b>Views:</b>${image.views}</p>
         <p><b>Comments:</b>${image.comments}</p>
         <p><b>Downloads:</b>${image.downloads}</p>
-    </div>
-    </li>
-    `;
-}).join('');
+        </div>
+        </li>
+`).join('');
 
 galleryList.insertAdjacentHTML('beforeend', markup);
 lightbox.refresh();
 }
 
+export function clearGallery() {
+    galleryList.innerHTML = '';
+}
+
+export function showLoader() {
+    loaderContainer.classList.remove('is-hidden');
+}
+
+export function hideLoader() {
+    loaderContainer.classList.add('is-hidden');
+}
