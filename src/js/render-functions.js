@@ -6,6 +6,14 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 const galleryList = document.querySelector('.gallery');
 const loaderContainer = document.querySelector('.loader');
 
+const lightbox = new SimpleLightbox('.gallery a', {
+    captions: true,
+    captionsData: 'alt',
+    captionDelay: 250,
+    captionPosition: 'bottom',
+});
+
+export function renderImages(images) {
 const markup = images.map(({image}) => {
     return `
     <li class="gallery-item">
@@ -25,3 +33,8 @@ const markup = images.map(({image}) => {
     </li>
     `;
 }).join('');
+
+galleryList.insertAdjacentHTML('beforeend', markup);
+lightbox.refresh();
+}
+
