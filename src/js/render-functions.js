@@ -21,13 +21,14 @@ export function createGallery(images) {
         class="gallery-image" 
         src="${image.webformatURL}" 
         alt="${image.tags}" 
+        loading="lazy"
         />
         </a>
         <div class="info">
-        <p><b>Likes:</b>${image.likes}</p>
-        <p><b>Views:</b>${image.views}</p>
-        <p><b>Comments:</b>${image.comments}</p>
-        <p><b>Downloads:</b>${image.downloads}</p>
+        <p class="text-info"><b>Likes:</b>${image.likes}</p>
+        <p class="text-info"><b>Views:</b>${image.views}</p>
+        <p class="text-info"><b>Comments:</b>${image.comments}</p>
+        <p class="text-info"><b>Downloads:</b>${image.downloads}</p>
         </div>
         </li>
 `).join('');
@@ -36,14 +37,14 @@ galleryList.insertAdjacentHTML('beforeend', markup);
 lightbox.refresh();
 }
 
-export function clearGallery() {
-    galleryList.innerHTML = '';
-}
-
 export function showLoader() {
     loaderContainer.classList.remove('is-hidden');
 }
 
 export function hideLoader() {
     loaderContainer.classList.add('is-hidden');
+}
+
+export function clearGallery() {
+    galleryList.innerHTML = '';
 }

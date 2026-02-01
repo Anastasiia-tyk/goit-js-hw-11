@@ -33,6 +33,9 @@ getImagesByQuery(query)
         message:
             'Sorry, there are no images matching your search query. Please try again!',
         position: 'topRight',
+        backgroundColor: '#EF4040',
+        progressBar:'#B51B1B',
+        messageColor: '#FFFFFF',
         });
         return;
     }
