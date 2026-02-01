@@ -39,6 +39,7 @@
 
 .form-input-text:focus {
     border: 1px solid #4e75ff;
+    color: #2e2f42;
 }
 
 .form-input-text:focus::placeholder {
